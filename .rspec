@@ -1,1 +1,1 @@
--I lib -r ./spec/spec_helper.rb
+-I lib -r ./spec/spec_helper.rb --color
