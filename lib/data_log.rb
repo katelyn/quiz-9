@@ -12,4 +12,10 @@ class DataLog
     @data.inject(0) { |count, row| row['call-dest'] == search_value ? count + 1 : count }
   end
 
+  def call_dest_with_unique_values
+    result = Hash.new { |hash, key| hash[key] = 0 }
+    @data.each { |row| result[row['call-dest']] += 1 }
+    result
+  end
+
 end
