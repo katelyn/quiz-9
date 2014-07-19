@@ -9,8 +9,12 @@ describe String do
       expect('000:00:00'.duration_to_seconds).to equal(0)
     end
 
-    it 'should have a count of the number of seconds for the seconds field' do
-      expect('000:00:25'.duration_to_seconds).to equal(25)
+    it 'should count the number of seconds for the seconds field' do
+      expect('000:00:03'.duration_to_seconds).to equal(3)
+    end
+
+    it 'should count the number of seconds for the minutes field and add it to the seconds field' do
+      expect('000:02:04'.duration_to_seconds).to equal(124)
     end
   end
 
