@@ -28,7 +28,15 @@ describe DataLog do
     end
 
     it 'should produce a hash of the count of unique values for a given column' do
-      expect(data_log.call_dest_with_unique_values).to eql({ 'abc' => 2, 'def' => 1 })
+      expect(data_log.call_dest_with_unique_values).to eql({'abc' => 2, 'def' => 1})
+    end
+  end
+
+  describe '#total_call_duration' do
+    before { data.concat [{'call-duration' => '000:00:34'}, {'call-duration' => '000:00:12'}] }
+
+    it 'should calculate the total call duration' do
+      expect(data_log.total_call_duration).to equal(46)
     end
   end
 

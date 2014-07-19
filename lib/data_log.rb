@@ -18,4 +18,8 @@ class DataLog
     result
   end
 
+  def  total_call_duration
+    @data.inject(0) { |count, row| row['call-duration'].duration_to_seconds + count }
+  end
+
 end
