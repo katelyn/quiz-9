@@ -5,7 +5,7 @@ describe DataLog do
 
   it 'should count the number of rows' do
     data.concat [{}, {}, {}]
-    expect(data_log.row_count).to equal 3
+    expect(data_log.row_count).to eq 3
   end
 
   describe '#call_dest_with_value_count' do
@@ -14,11 +14,11 @@ describe DataLog do
     end
 
     it 'should have no matching values when the search value is not found' do
-      expect(data_log.call_dest_with_value_count('9.8.7.l6')).to equal 0
+      expect(data_log.call_dest_with_value_count('9.8.7.l6')).to eq 0
     end
 
     it 'should count the number of rows whose call-dest column has the value 208.51.154.200' do
-      expect(data_log.call_dest_with_value_count('208.51.154.200')).to equal 2
+      expect(data_log.call_dest_with_value_count('208.51.154.200')).to eq 2
     end
   end
 
@@ -28,7 +28,7 @@ describe DataLog do
     end
 
     it 'should produce a hash of the count of unique values for a given column' do
-      expect(data_log.call_dest_with_unique_values).to eql({'abc' => 2, 'def' => 1})
+      expect(data_log.call_dest_with_unique_values).to eq({'abc' => 2, 'def' => 1})
     end
   end
 
@@ -36,7 +36,7 @@ describe DataLog do
     before { data.concat [{'call-duration' => '000:00:34'}, {'call-duration' => '000:00:12'}] }
 
     it 'should calculate the total call duration' do
-      expect(data_log.total_call_duration).to equal(46)
+      expect(data_log.total_call_duration).to eq 46
     end
   end
 

@@ -22,4 +22,12 @@ class DataLog
     @data.inject(0) { |count, row| row['call-duration'].duration_to_seconds + count }
   end
 
+  def report
+    'Data Report:' +
+        "\n\t1: #{row_count}" +
+        "\n\t2: #{call_dest_with_value_count('208.51.154.200')}" +
+        "\n\t3: #{call_dest_with_unique_values}" +
+        "\n\t4: #{total_call_duration}"
+  end
+
 end
