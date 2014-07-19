@@ -1,0 +1,1 @@
+Dir.glob("#{Dir.pwd}/lib/**/*.rb").each { |file| require file }
