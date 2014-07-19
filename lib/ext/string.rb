@@ -6,11 +6,19 @@ class String
 
 
   def duration_to_seconds
-    match_data = DURATION_FORMAT.match(self)
-    raise "#{self} is not a valid duration" unless match_data
-    seconds = match_data['seconds'].to_i
-    minutes_in_seconds = match_data['minutes'].to_i * SECONDS_PER_MINUTE
-    hours_in_minute = match_data['hours'].to_i * MINUTES_PER_HOUR * SECONDS_PER_MINUTE
-    seconds + minutes_in_seconds + hours_in_minute
+    return nil unless (match_data = DURATION_FORMAT.match(self))
+    minutes_in_seconds = minutes_to_seconds(match_data['minutes'].to_i)
+    hours_in_minute = minutes_to_seconds(hours_to_minutes(match_data['hours'].to_i))
+    match_data['seconds'].to_i + minutes_in_seconds + hours_in_minute
+  end
+
+  private
+
+  def minutes_to_seconds(minutes)
+    minutes * SECONDS_PER_MINUTE
+  end
+
+  def hours_to_minutes(hours)
+    hours * MINUTES_PER_HOUR
   end
 end
