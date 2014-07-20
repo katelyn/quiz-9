@@ -40,4 +40,16 @@ describe DataLog do
     end
   end
 
+  describe '#called_party_on_dest_decoding' do
+    before do
+      data.concat [{'called-party-on-dest' => 'GwAJCA=='},
+                   {'called-party-on-dest' => 'FAoKAA=='},
+                   {'called-party-on-dest' => 'GwAJCA=='}]
+    end
+
+    it "should count the number of columns that decode to a specific value after being xor'd" do
+      expect(data_log.count_called_party_on_dest_decoding_matches('seed', 'hello'))
+    end
+  end
+
 end

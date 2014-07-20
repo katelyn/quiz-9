@@ -1,4 +1,5 @@
 require 'csv'
+require 'base64'
 
 class DataLog
 
@@ -22,6 +23,12 @@ class DataLog
 
   def  total_call_duration
     data.inject(0) { |count, row| row['call-duration'].duration_to_seconds + count }
+  end
+
+  def count_called_party_on_dest_decoding_matches(xor_value, search_value)
+    data.inject(0) do |count, row|
+      (Base64.decode64(row['called-party-on-dest']) ^ xor_value) == search_value ? count + 1: count
+    end
   end
 
   def report
