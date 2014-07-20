@@ -12,6 +12,13 @@ class String
     match_data['seconds'].to_i + minutes_in_seconds + hours_in_minute
   end
 
+  def ^(other)
+    maximum_length = [self.length, other.length].min
+    self_decoded = self[0, maximum_length].unpack('U*')
+    other_decoded = other[0, maximum_length].unpack('U*')
+    self_decoded.zip(other_decoded).map { |left, right| left ^ right }.pack('U*')
+  end
+
   private
 
   def minutes_to_seconds(minutes)

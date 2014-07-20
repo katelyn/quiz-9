@@ -26,4 +26,18 @@ describe String do
     end
   end
 
+  describe '#^' do
+    it 'should be able to xor two strings of equal length' do
+      expect('dog' ^ 'cat').to eq("\a\u000E\u0013")
+    end
+
+    it 'should be able to xor two strings when the receiver is shorter in length' do
+      expect('pups' ^ 'kittens').to eq("\e\u001C\u0004\a")
+    end
+
+    it 'should be able to xor two strings when the argument is shorter in length' do
+      expect('kittens' ^ 'pups').to eq("\e\u001C\u0004\a")
+    end
+  end
+
 end
