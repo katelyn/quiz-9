@@ -2,7 +2,7 @@ require 'csv'
 
 describe 'Quiz Output' do
 
-  xit 'should have a report with all requested information' do
+  it 'should have a report with all requested information' do
     csv = CSV.open("#{Dir.pwd}/data/quiz1.csv", col_sep: ';', headers: true)
     data_log = DataLog.new(csv)
 

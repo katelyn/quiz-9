@@ -39,7 +39,8 @@ class DataLog
         "\n\t1: #{row_count}" +
         "\n\t2: #{call_dest_with_value_count('208.51.154.200')}" +
         "\n\t3: #{unique_call_dest_values_for_reporting}" +
-        "\n\t4: #{total_call_duration}"
+        "\n\t4: #{total_call_duration}" +
+        "\n\t5: #{count_called_party_on_dest_decoding_matches('KXGn4NwoBYTtLs3ef1IHk', '00163717708183778')}"
   end
 
   private
