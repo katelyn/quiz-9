@@ -16,9 +16,7 @@ class DataLog
   end
 
   def call_dest_with_unique_values
-    result = Hash.new { |hash, key| hash[key] = 0 }
-    data.each { |row| result[row['call-dest']] += 1 }
-    result
+    data.inject(Hash.new { |hash, key| hash[key] = 0 }) { |result, row| result[row['call-dest']] += 1; result }
   end
 
   def  total_call_duration
